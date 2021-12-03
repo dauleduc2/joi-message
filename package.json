@@ -10,5 +10,14 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^16.11.11"
-  }
+  },
+  "keywords": [
+    "joi-message",
+    "joi message",
+    "message",
+    "joi friendly message",
+    "message-joi",
+    "message joi",
+    "joi"
+  ]
 }
