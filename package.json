@@ -1,0 +1,14 @@
+{
+  "name": "joi-message",
+  "version": "1.0.0",
+  "description": "a small package of Joi help you to generate more friendly messages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dauleduc2",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^16.11.11"
+  }
+}
