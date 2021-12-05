@@ -8,7 +8,11 @@
     "start:dev": "NODE_ENV=development  nodemon --exec ts-node ./src/index.ts",
     "build": "rd /s /q lib && tsc"
   },
-  "author": "dauleduc2",
+  "author": {
+    "email": "dauleduc2@gmail.com",
+    "name": "Dau Le Duc",
+    "url": "https://github.com/dauleduc2"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^16.11.11",
