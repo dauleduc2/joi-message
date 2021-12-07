@@ -25,12 +25,19 @@ yarn add joi joi-message
 - createDateMessages : create string messages for Date type
 - createObjectMessages : create string messages for Object type
 
+## Import
+
+```js
+const { JoiMessage } = require("joi-message");
+```
+
 ## Note
 
 - when you use any method that needs a value, please pass it into the object into each method to show the exact message as expected
 
 ```js
-//example
+// example/document.js
+
 Joi.string()
   .min(4)
   .max(20)
@@ -40,9 +47,10 @@ Joi.string()
 ## Usage
 
 ```js
-// ./src/test/usage.js
+// example/usage.js
+
 const Joi = require("joi");
-const { JoiMessage } = require("./lib/index.js");
+const { JoiMessage } = require("../../lib/index.js");
 
 const testSchema = Joi.object({
   username: Joi.string()
@@ -60,7 +68,9 @@ const testSchema = Joi.object({
     .messages(JoiMessage.createArrayMessages({ showFieldName: false, min: 4 })),
 });
 const result = testSchema.validate({ username: "aaa", email: "bbb", list: [1, 2, 3] }, { abortEarly: false });
-console.log(result.error);
+console.log(result.error.details);
+//  The return messages will be like this
+//  [
 //    {
 //       message: 'Username should be at least 4 characters',
 //       type: 'string.min',
@@ -76,14 +86,16 @@ console.log(result.error);
 //       type: 'array.min',
 //       ...
 //     }
+//  ]
 ```
 
 ## Custom message
 
 ```js
-// ./src/test/custom.js
+// example/custom.js
+
 const Joi = require("joi");
-const { JoiMessage } = require("./lib/index.js");
+const { JoiMessage } = require("../../lib/index.js");
 
 const testSchema = Joi.object({
   username: Joi.string()
