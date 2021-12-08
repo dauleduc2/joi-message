@@ -50,7 +50,7 @@ Joi.string()
 // example/usage.js
 
 const Joi = require("joi");
-const { JoiMessage } = require("../../lib/index.js");
+const { JoiMessage } = require("joi-message");
 
 const testSchema = Joi.object({
   username: Joi.string()
@@ -87,6 +87,7 @@ console.log(result.error.details);
 //       ...
 //     }
 //  ]
+
 ```
 
 ## Custom message
@@ -95,7 +96,7 @@ console.log(result.error.details);
 // example/custom.js
 
 const Joi = require("joi");
-const { JoiMessage } = require("../../lib/index.js");
+const { JoiMessage } = require("joi-message");
 
 const testSchema = Joi.object({
   username: Joi.string()
@@ -114,4 +115,5 @@ console.log(result.error.details);
 //     ...
 //   }
 // ]
+
 ```

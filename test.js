@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const { JoiMessage } = require("./lib/index.js");
+const { JoiMessage } = require("joi-message");
 
 const testSchema = Joi.object({
   username: Joi.string()
