@@ -11,6 +11,7 @@ const testSchema = Joi.object({
 });
 const result = testSchema.validate({ username: "aaa" });
 console.log(result.error.details);
+
 // [
 //  {
 //     message: 'test message',

@@ -1,7 +1,9 @@
 export interface ReturnMessages {
   [key: string]: string;
 }
-
+export interface anyType {
+  (field?: string, showFieldName?: boolean): ReturnMessages;
+}
 export interface CommonOption {
   showFieldName: boolean;
   field: string;

@@ -1,7 +1,9 @@
-import { JoiMessageType, ReturnMessages } from "./types/rootType";
+import { anyType, JoiMessageType } from "./types/rootType";
 
-const anyTypeMessages: ReturnMessages = {
-  "any.required": "required",
+const anyTypeMessages: anyType = (field, showFieldName) => {
+  return {
+    "any.required": `${showFieldName ? field + " is " : ""}required`,
+  };
 };
 
 export const JoiMessage: JoiMessageType = {
@@ -18,8 +20,9 @@ export const JoiMessage: JoiMessageType = {
       "string.length": `${showFieldName ? field + " " : ""}should be ${length} characters`,
       "string.lowercase": `${showFieldName ? field + " " : ""}should not contain any capital letter`,
       "string.uppercase": `${showFieldName ? field + " " : ""}should only contain capital letter`,
+      "string.empty": `${showFieldName ? field + " " : ""}should not be empty`,
     };
-    return { ...anyTypeMessages, ...messages };
+    return { ...anyTypeMessages(field, showFieldName), ...messages };
   },
   createNumberMessages: function ({ field, max, min, greater, less, showFieldName = true }) {
     const messages = {
@@ -32,7 +35,7 @@ export const JoiMessage: JoiMessageType = {
       "number.port": `invalid port`,
       "number.positive": `${showFieldName ? field + " " : ""}should be positive number  `,
     };
-    return { ...anyTypeMessages, ...messages };
+    return { ...anyTypeMessages(field, showFieldName), ...messages };
   },
   createArrayMessages: function ({ field, max, min, showFieldName = true, length }) {
     const messages = {
@@ -43,13 +46,13 @@ export const JoiMessage: JoiMessageType = {
       "array.sparse": `${showFieldName ? field + " " : ""}should not have undefined value `,
       "array.unique": `${showFieldName ? field + " " : ""}should not contain duplicate value`,
     };
-    return { ...anyTypeMessages, ...messages };
+    return { ...anyTypeMessages(field, showFieldName), ...messages };
   },
   createBooleanMessages: function ({ field, showFieldName = true }) {
     const messages = {
       "boolean.base": `${showFieldName ? field + " " : ""}can only be true or false`,
     };
-    return { ...anyTypeMessages, ...messages };
+    return { ...anyTypeMessages(field, showFieldName), ...messages };
   },
   createDateMessages: function ({ field, showFieldName = true, greater, less, max, min }) {
     const messages = {
@@ -59,7 +62,7 @@ export const JoiMessage: JoiMessageType = {
       "date.max": `${showFieldName ? field + " " : ""}should be the day before ${max} or ${max}`,
       "date.min": `${showFieldName ? field + " " : ""}should be the day after ${min} or ${min}`,
     };
-    return { ...anyTypeMessages, ...messages };
+    return { ...anyTypeMessages(field, showFieldName), ...messages };
   },
   createObjectMessages: function ({ field, showFieldName = true, length, min, max }) {
     const messages = {
@@ -68,7 +71,7 @@ export const JoiMessage: JoiMessageType = {
       "object.min": `${showFieldName ? field + " " : ""}should have at least ${min} keys`,
       "object.max": `${showFieldName ? field + " " : ""}should have ${max} or more than ${max} keys`,
     };
-    return { ...anyTypeMessages, ...messages };
+    return { ...anyTypeMessages(field, showFieldName), ...messages };
   },
 };
 export default JoiMessage;
